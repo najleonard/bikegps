@@ -1,5 +1,5 @@
 __author__ = 'nleonard1'
-#adding random comment
+#rasp pi adding random comment
 import stravalib, urllib2, json, requests as r
 import geopy, geopy.distance
 import googlemaps
