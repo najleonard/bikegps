@@ -118,10 +118,11 @@ if __name__ == '__main__':
 		print
 		#print 'sats        ' , gpsd.satellites
   		route = gmaps.distance_matrix(origins=(gpsd.fix.latitude,gpsd.fix.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
-  		distance = route["rows"][0]["elements"][0]["distance"]["value"]
-  		duration = route["rows"][0]["elements"][0]["duration"]["value"]
-  		print ("Distance is %8.2fkm" % (distance/1000))
-  		print ("Duraction is %8.2f minutes" % (duration/60))
+  		print route
+      #distance = route["rows"][0]["elements"][0]["distance"]["value"]
+  		#duration = route["rows"][0]["elements"][0]["duration"]["value"]
+  		#print ("Distance is %8.2fkm" % (distance/1000))
+  		#print ("Duraction is %8.2f minutes" % (duration/60))
 
 		time.sleep(5) #set to whatever
  
