@@ -9,7 +9,7 @@ from time import *
 import time
 import threading
 import RPi.GPIO as GPIO
-
+import math, numpy as np
 
 STORED_ACCESS_TOKEN = "59415871d89656eaf18fb8bee6a999c0a332489e"
 
@@ -124,12 +124,12 @@ if __name__ == '__main__':
       #print 'sats        ' , gpsd.satellites
       route = gmaps.distance_matrix(origins=(gpsd.fix.latitude,gpsd.fix.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
       print route
-      #distance = route["rows"][0]["elements"][0]["distance"]["value"]
-      #duration = route["rows"][0]["elements"][0]["duration"]["value"]
-      #print ("Distance is %8.2fkm" % (distance/1000))
-      #print ("Duraction is %8.2f minutes" % (duration/60))
-
-    time.sleep(5) #set to whatever
+      if np.invert(math.isnan(gpsd.fix.altitude)):
+      	distance = route["rows"][0]["elements"][0]["distance"]["value"]
+      	duration = route["rows"][0]["elements"][0]["duration"]["value"]
+      	print ("Distance is %8.2fkm" % (distance/1000))
+      	print ("Duraction is %8.2f minutes" % (duration/60))
+      time.sleep(5) #set to whatever
  
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
     print "\nKilling Thread..."
