@@ -106,21 +106,21 @@ if __name__ == '__main__':
     while True:
       #It may take a second or two to get good data
       #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
-    GPIO.output(25,GPIO.HIGH)
-  	os.system('clear')
-	 
-		print
-		print ' GPS reading'
-		print '----------------------------------------'
-		print 'latitude    ' , gpsd.fix.latitude
-		print 'longitude   ' , gpsd.fix.longitude
-		print 'time utc    ' , gpsd.utc,' + ', gpsd.fix.time
-		print 'altitude (m)' , gpsd.fix.altitude
-		print 'speed (m/s) ' , gpsd.fix.speed
-		print 'climb       ' , gpsd.fix.climb
-		print 'track       ' , gpsd.fix.track
-		print 'mode        ' , gpsd.fix.mode
-		print
+      GPIO.output(25,GPIO.HIGH)
+    	os.system('clear')
+  	 
+  		print
+  		print ' GPS reading'
+  		print '----------------------------------------'
+  		print 'latitude    ' , gpsd.fix.latitude
+  		print 'longitude   ' , gpsd.fix.longitude
+  		print 'time utc    ' , gpsd.utc,' + ', gpsd.fix.time
+  		print 'altitude (m)' , gpsd.fix.altitude
+  		print 'speed (m/s) ' , gpsd.fix.speed
+  		print 'climb       ' , gpsd.fix.climb
+  		print 'track       ' , gpsd.fix.track
+  		print 'mode        ' , gpsd.fix.mode
+  		print
 		#print 'sats        ' , gpsd.satellites
   		route = gmaps.distance_matrix(origins=(gpsd.fix.latitude,gpsd.fix.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
   		print route
