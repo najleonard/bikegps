@@ -61,25 +61,25 @@ for i in range(0,1): #len(response)):
 	testPoint = geopy.Point(start_latitude,start_longitude)
 
 
-homePoint = geopy.Point(37.743958333,-122.432046667)
+#homePoint = geopy.Point(37.743958333,-122.432046667)
 
-dist = geopy.distance.distance(testPoint,homePoint).km
+#dist = geopy.distance.distance(testPoint,homePoint).km
 
-route = gmaps.distance_matrix(origins=(homePoint.latitude,homePoint.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
+#route = gmaps.distance_matrix(origins=(homePoint.latitude,homePoint.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
 
-distance = route["rows"][0]["elements"][0]["distance"]["value"]
-duration = route["rows"][0]["elements"][0]["duration"]["value"]
+#distance = route["rows"][0]["elements"][0]["distance"]["value"]
+#duration = route["rows"][0]["elements"][0]["duration"]["value"]
 
-directions = gmaps.directions((homePoint.latitude,homePoint.longitude),(testPoint.latitude,testPoint.longitude),mode="bicycling")
+#directions = gmaps.directions((homePoint.latitude,homePoint.longitude),(testPoint.latitude,testPoint.longitude),mode="bicycling")
 
 #print(directions)
-for i in directions[0]["legs"][0]["steps"]:
-	print i["html_instructions"]
+#for i in directions[0]["legs"][0]["steps"]:
+#	print i["html_instructions"]
 
-print ("Distance is %8.2fkm" % (distance/1000))
-print ("Duraction is %8.2f minutes" % (duration/60))
+#print ("Distance is %8.2fkm" % (distance/1000))
+#print ("Duraction is %8.2f minutes" % (duration/60))
 
-print(dist)
+#print(dist)
 
 SEGMENT = 229781
 mysegment = client.get_segment(SEGMENT) #client.get_segment(,6795950158)
@@ -130,7 +130,7 @@ if __name__ == '__main__':
         print ("Distance is %8.2fkm" % (distance/1000))
         print ("Duraction is %8.2f minutes" % (duration/60))
         print ("Next direction:")
-        directions = gmaps.directions((homePoint.latitude,homePoint.longitude),(testPoint.latitude,testPoint.longitude),mode="bicycling")
+        directions = gmaps.directions((gpsd.fix..latitude,gpsd.fix..longitude),(testPoint.latitude,testPoint.longitude),mode="bicycling")
         print directions[0]["legs"][0]["steps"][0]["html_instructions"]
       time.sleep(5) #set to whatever
  
