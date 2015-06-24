@@ -125,13 +125,13 @@ if __name__ == '__main__':
       route = gmaps.distance_matrix(origins=(gpsd.fix.latitude,gpsd.fix.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
       print route
       if np.invert(math.isnan(gpsd.fix.altitude)):
-      	distance = route["rows"][0]["elements"][0]["distance"]["value"]
-      	duration = route["rows"][0]["elements"][0]["duration"]["value"]
-      	print ("Distance is %8.2fkm" % (distance/1000))
-      	print ("Duraction is %8.2f minutes" % (duration/60))
-      	print ("Next direction:")
-      	directions = gmaps.directions((homePoint.latitude,homePoint.longitude),(testPoint.latitude,testPoint.longitude),mode="bicycling")
-      	print directions[0]["legs"][0]["steps"][0]["html_instructions"]
+        distance = route["rows"][0]["elements"][0]["distance"]["value"]
+        duration = route["rows"][0]["elements"][0]["duration"]["value"]
+        print ("Distance is %8.2fkm" % (distance/1000))
+        print ("Duraction is %8.2f minutes" % (duration/60))
+        print ("Next direction:")
+        directions = gmaps.directions((homePoint.latitude,homePoint.longitude),(testPoint.latitude,testPoint.longitude),mode="bicycling")
+        print directions[0]["legs"][0]["steps"][0]["html_instructions"]
       time.sleep(5) #set to whatever
  
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
