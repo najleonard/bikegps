@@ -8,6 +8,8 @@ from gps import *
 from time import *
 import time
 import threading
+import RPi.GPIO as GPIO
+
 
 STORED_ACCESS_TOKEN = "59415871d89656eaf18fb8bee6a999c0a332489e"
 
@@ -15,7 +17,10 @@ from stravalib import Client
 from stravalib import unithelper
 
 gpsd = None #seting the global variable
- 
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(25,GPIO.OUT)
+
 os.system('clear') #clear the terminal (optional)
  
 class GpsPoller(threading.Thread):
@@ -101,8 +106,8 @@ if __name__ == '__main__':
     while True:
       #It may take a second or two to get good data
       #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
-	 
-		os.system('clear')
+    GPIO.output(25,GPIO.HIGH)
+  	os.system('clear')
 	 
 		print
 		print ' GPS reading'
@@ -130,4 +135,6 @@ if __name__ == '__main__':
     print "\nKilling Thread..."
     gpsp.running = False
     gpsp.join() # wait for the thread to finish what it's doing
+    GPIO.output(25,GPIO.LOW)
+  
   print "Done.\nExiting."
