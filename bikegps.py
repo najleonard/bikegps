@@ -107,29 +107,29 @@ if __name__ == '__main__':
       #It may take a second or two to get good data
       #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
       GPIO.output(25,GPIO.HIGH)
-    	os.system('clear')
+      os.system('clear')
   	 
-  		print
-  		print ' GPS reading'
-  		print '----------------------------------------'
-  		print 'latitude    ' , gpsd.fix.latitude
-  		print 'longitude   ' , gpsd.fix.longitude
-  		print 'time utc    ' , gpsd.utc,' + ', gpsd.fix.time
-  		print 'altitude (m)' , gpsd.fix.altitude
-  		print 'speed (m/s) ' , gpsd.fix.speed
-  		print 'climb       ' , gpsd.fix.climb
-  		print 'track       ' , gpsd.fix.track
-  		print 'mode        ' , gpsd.fix.mode
-  		print
-		#print 'sats        ' , gpsd.satellites
-  		route = gmaps.distance_matrix(origins=(gpsd.fix.latitude,gpsd.fix.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
-  		print route
+      print
+      print ' GPS reading'
+      print '----------------------------------------'
+      print 'latitude    ' , gpsd.fix.latitude
+      print 'longitude   ' , gpsd.fix.longitude
+      print 'time utc    ' , gpsd.utc,' + ', gpsd.fix.time
+      print 'altitude (m)' , gpsd.fix.altitude
+      print 'speed (m/s) ' , gpsd.fix.speed
+      print 'climb       ' , gpsd.fix.climb
+      print 'track       ' , gpsd.fix.track
+      print 'mode        ' , gpsd.fix.mode
+      print
+      #print 'sats        ' , gpsd.satellites
+      route = gmaps.distance_matrix(origins=(gpsd.fix.latitude,gpsd.fix.longitude), destinations=(testPoint.latitude,testPoint.longitude),mode="bicycling",language="English",units="metric")
+      print route
       #distance = route["rows"][0]["elements"][0]["distance"]["value"]
-  		#duration = route["rows"][0]["elements"][0]["duration"]["value"]
-  		#print ("Distance is %8.2fkm" % (distance/1000))
-  		#print ("Duraction is %8.2f minutes" % (duration/60))
+      #duration = route["rows"][0]["elements"][0]["duration"]["value"]
+      #print ("Distance is %8.2fkm" % (distance/1000))
+      #print ("Duraction is %8.2f minutes" % (duration/60))
 
-		time.sleep(5) #set to whatever
+    time.sleep(5) #set to whatever
  
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
     print "\nKilling Thread..."
